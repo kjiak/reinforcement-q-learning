@@ -354,7 +354,6 @@ def select_action(state):
 
 episode_durations = []
 
-
 def plot_durations():
     plt.figure(2)
     plt.clf()
@@ -451,7 +450,7 @@ def optimize_model():
 # duration improvements.
 #
 
-num_episodes = 50
+num_episodes = 10
 for i_episode in range(num_episodes):
     # Initialize the environment and state
     env.reset()
@@ -483,6 +482,7 @@ for i_episode in range(num_episodes):
         if done:
             episode_durations.append(t + 1)
             plot_durations()
+            print("episode {}: {}".format(i_episode, episode_durations[i_episode]))
             break
     # Update the target network, copying all weights and biases in DQN
     if i_episode % TARGET_UPDATE == 0:
